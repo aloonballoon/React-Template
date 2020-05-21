@@ -14,7 +14,7 @@ module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    port: process.env.PORT,
+    port: process.env.PORT || 3000,
   },
   entry: path.resolve(__dirname, 'src', 'index.js'),
   output: {
