@@ -2,12 +2,19 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const devMode = process.env.NODE_ENV !== 'production';
+const webpack = require('webpack');
+const dotenv = require('dotenv');
+const env = dotenv.config().parsed;
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
-    port: 3000,
+    port: process.env.PORT,
   },
   entry: path.resolve(__dirname, 'src', 'index.js'),
   output: {
@@ -67,5 +74,6 @@ module.exports = {
       filename: devMode ? '[name].css' : '[name].[hash].css',
       chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
     }),
+    new webpack.DefinePlugin(envKeys),
   ],
 };

@@ -2,6 +2,4 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-import { Homepage } from './pages/Homepage';
-
-ReactDOM.render(<Homepage />, document.getElementById('root'));
+ReactDOM.render(<h1>React Template</h1>, document.getElementById('root'));
