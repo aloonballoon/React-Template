@@ -41,11 +41,7 @@ module.exports = {
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: devMode,
-              reloadAll: true,
-              modules: true,
-            },
+            options: {},
           },
           {
             loader: 'css-modules-typescript-loader',
